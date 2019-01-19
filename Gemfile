@@ -32,10 +32,11 @@ group :doc do
 end
 
 group :test do
-  gem "rspec-rails", "~> 2.14"
-  gem "factory_bot_rails"
+  gem 'rspec-rails', '~> 2.14'
+  gem 'factory_bot_rails'
   gem 'ffaker'
   gem 'test-unit'
+  gem 'shoulda-matchers'
 end
 
 # Use ActiveModel has_secure_password
