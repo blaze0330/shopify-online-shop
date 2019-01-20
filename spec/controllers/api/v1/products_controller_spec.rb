@@ -9,7 +9,7 @@ describe Api::V1::ProductsController do
       get :show, id: @product.id
     end
 
-    it "returns the information about a reporter on a hash" do
+    it "returns the information about a product on a hash" do
       product_response = json_response
       expect(product_response[:title]).to eql @product.title
     end
@@ -20,11 +20,29 @@ describe Api::V1::ProductsController do
   # Test get multiple products (index)
   describe "GET #index" do
     before(:each) do
+      @product1 = FactoryBot.create :product, inventory_count: 0
+      @product2 = FactoryBot.create :product, inventory_count: 50
+      @product3 = FactoryBot.create :product, inventory_count: 0
+      @product4 = FactoryBot.create :product, inventory_count: 99
+      get :index, only_available_inventory: true
+    end
+
+    it "returns 4 records from the database" do
+      products_response = json_response
+      expect(products_response.length).to eq(2)
+    end
+
+    it { should respond_with 200 }
+  end
+
+   # Test get multiple products (index) with argument to only return products with available inv
+  describe "GET #index" do
+    before(:each) do
       4.times { FactoryBot.create :product }
       get :index
     end
 
-    it "returns 4 records from the database" do
+    it "returns 2 records from the database that have available inventory" do
       products_response = json_response
       expect(products_response.length).to eq(4)
     end
