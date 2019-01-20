@@ -3,11 +3,6 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.6'
 
-# Use sqlite3 as the database for Active Record
-group :development do
-  gem 'sqlite3'
-end
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -31,10 +26,18 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+# Use sqlite3 as the database for Active Record
+group :development do
+  gem 'sqlite3'
+end
+
+group :development, :test do
+  gem "factory_bot_rails"
+  gem 'ffaker'
+end
+
 group :test do
   gem 'rspec-rails', '~> 2.14'
-  gem 'factory_bot_rails'
-  gem 'ffaker'
   gem 'test-unit'
   gem 'shoulda-matchers'
 end
