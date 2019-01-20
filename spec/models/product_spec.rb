@@ -14,4 +14,7 @@ describe Product do
   it { should validate_presence_of :inventory_count }
   it { should validate_numericality_of(:inventory_count).is_greater_than_or_equal_to(0) }
 
+  it { should have_many(:orders) }
+  it { should have_many(:shopping_carts).through(:orders) }
+
 end
