@@ -31,5 +31,22 @@ describe Api::V1::ShoppingCartsController do
 
     it { should respond_with 200 }
   end
+
+  # create a shopping cart
+  describe "POST #create" do
+    before(:each) do
+      product_1 = FactoryBot.create :product
+      product_2 = FactoryBot.create :product
+      shopping_cart_params = { product_ids: [product_1.id, product_2.id] }
+      post :create, shopping_cart: shopping_cart_params
+    end
+
+    it "returns a shopping cart record" do
+      shopping_cart_response = json_response
+      expect(shopping_cart_response[:id]).to be_present
+    end
+
+    it { should respond_with 201 }
+  end
   
 end

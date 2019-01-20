@@ -7,7 +7,7 @@ OnlineMarketplace::Application.routes.draw do
     scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
     	# Resources
     	resources :products, :only => [:show, :index, :create, :destroy]
-    	resources :shopping_carts, :only => [:show, :index]
+    	resources :shopping_carts, :only => [:show, :index, :create]
     end
   end
 end

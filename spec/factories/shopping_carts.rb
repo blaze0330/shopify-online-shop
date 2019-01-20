@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :shopping_cart do
-    total { "9.99" }
+    total { "0" }
   end
 end
