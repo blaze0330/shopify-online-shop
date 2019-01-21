@@ -1,8 +1,8 @@
 # Online Marketplace 
-Shopify Summer 2019 Developer Intern Challenge Question
+Shopify Summer 2019 Developer Intern Challenge Question 
+This webserver is built on Rails 4.0.6 and Ruby 2.3.0. The server is developed using test driven develpment with rpsec.
 
 ## Getting Started
-This webserver is built on Rails 4.0.6 and Ruby 2.3.0
 Assuming you have the correct Ruby version installed:
 1. Fork this github repo and go to the application's main directory
 2. Install the required gems by running the bundler
