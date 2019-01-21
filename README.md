@@ -16,7 +16,7 @@ Note: a higher version of the bundler might not work, just in case, use the bund
 
 The server is now started at `http://localhost:3000` and you will be able to call the API following the below documentation.
 
-## API calls
+## Online Marketplace API Documentation
 ### Populating the database
 Before demo-ing the server, you can populate the database with products beforehand using the Factory method.
 For example, to populate the databse with 20 starting products:       
