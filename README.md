@@ -9,8 +9,11 @@ Assuming you have the correct Ruby version installed:
 
         $  bundle _1.3.0_ install
 Note: a higher version of the bundler might not work, just in case, use the bundler at version 1.3.0
+3. Run database migration 
 
-3. Start the web server:
+        $ rails db:migrate
+	
+4. Start the web server:
 
         $ rails server
 
