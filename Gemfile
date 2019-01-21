@@ -1,12 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
-
-# Use sqlite3 as the database for Active Record
-group :development do
-  gem 'sqlite3'
-end
+gem 'rails', '4.0.6'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -29,6 +24,22 @@ gem 'active_model_serializers'
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
+end
+
+# Use sqlite3 as the database for Active Record
+group :development do
+  gem 'sqlite3'
+end
+
+group :development, :test do
+  gem "factory_bot_rails"
+  gem 'ffaker'
+end
+
+group :test do
+  gem 'rspec-rails', '~> 2.14'
+  gem 'test-unit'
+  gem 'shoulda-matchers'
 end
 
 # Use ActiveModel has_secure_password
