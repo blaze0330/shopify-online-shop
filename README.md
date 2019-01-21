@@ -8,9 +8,11 @@ Assuming you have the correct Ruby version installed:
 2. Install the required gems by running the bundler
 
         $  bundle _1.3.0_ install
-Note: a higher version of the bundler might not work, just in case, use the bundler at version 1.3.0
-3. Run database migration 
+Note: a higher version of the bundler might not work, just in case, use the bundler at version 1.3.0 
 
+3. Create database and run database migration 
+	
+        $ rake db:create
         $ rails db:migrate
 	
 4. Start the web server:
