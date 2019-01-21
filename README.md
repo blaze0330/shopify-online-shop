@@ -1,6 +1,6 @@
 # Online Marketplace 
 Shopify Summer 2019 Developer Intern Challenge Question 
-This webserver is built on Rails 4.0.6 and Ruby 2.3.0. The server is developed using test driven develpment with rpsec.
+This webserver is built on Rails 4.0.6 and Ruby 2.3.0. The server is developed using test driven development with rpsec.
 
 ## Getting Started
 Assuming you have the correct Ruby version installed:
