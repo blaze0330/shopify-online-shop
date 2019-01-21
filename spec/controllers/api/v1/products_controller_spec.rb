@@ -17,7 +17,7 @@ describe Api::V1::ProductsController do
     it { should respond_with 200 }
   end
 
-  # Test get multiple products (index)
+  # Test get multiple products (index) with argument to only return products with available inv
   describe "GET #index" do
     before(:each) do
       @product1 = FactoryBot.create :product, inventory_count: 0
@@ -35,7 +35,7 @@ describe Api::V1::ProductsController do
     it { should respond_with 200 }
   end
 
-   # Test get multiple products (index) with argument to only return products with available inv
+  # Test get multiple products (index)
   describe "GET #index" do
     before(:each) do
       4.times { FactoryBot.create :product }

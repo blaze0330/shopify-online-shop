@@ -26,7 +26,7 @@ describe Product do
       @product4 = FactoryBot.create :product, inventory_count: 99
     end
 
-    it "returns the products which have avaialble inventory" do
+    it "returns the products which have available inventory" do
       expect(Product.available_inventory.sort).to match_array([@product2, @product4])
     end
   end
