@@ -7,10 +7,6 @@ class Product < ActiveRecord::Base
   validates :inventory_count, numericality: { greater_than_or_equal_to: 0 },
                     presence: true
 
-  # association with shopping carts through orders (many to many)
-  has_many :orders
-  has_many :shopping_carts, through: :orders
-
   # implement filter for available inventory only
   scope :available_inventory, -> {
     where("inventory_count > 0") 
@@ -23,4 +19,10 @@ class Product < ActiveRecord::Base
     
     products
   end
+
+  # method that decrements inventory count by 1
+  def decrement_product_inventory_count!
+    self.decrement!(:inventory_count, 1)
+  end
+
 end

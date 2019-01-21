@@ -27,6 +27,21 @@ class Api::V1::ProductsController < ApplicationController
     product.destroy
     head 204
   end
+
+  # Purchase product
+  def update
+    product = Product.find(params[:id])
+    if params[:purchase]
+      if product.inventory_count > 0
+        product.decrement_product_inventory_count!
+        render json: product, status: 200, location: [:api, product]
+      else
+        render json: { errors: "Cannot purchase product with 0 inventory count" }, status: 422
+      end
+    else
+      render json: { errors: "Can only use the update method to purchase product" }, status: 422
+    end
+  end
   
   private
 

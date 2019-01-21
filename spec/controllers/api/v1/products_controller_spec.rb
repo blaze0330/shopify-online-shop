@@ -88,7 +88,47 @@ describe Api::V1::ProductsController do
       it { should respond_with 422 }
     end
   end
+  
+  # Test product update inventory count (update)
+  describe "PUT/PATCH #update" do
 
+    context "when is successfully purchased" do
+      before(:each) do
+        @product = FactoryBot.create :product, inventory_count: 10
+        patch :update, { id: @product.id, purchase: true}, format: :json
+      end
+
+      # test product inventory count went down
+      it "renders the json representation for the updated user" do
+        product_response = json_response
+        expect(product_response[:inventory_count]).to eql 9
+      end
+
+
+      it { should respond_with 200 }
+    end
+
+    # Test product purchase unsucessful because product out of inventory
+    context "when is not updated" do
+      before(:each) do
+        @product = FactoryBot.create :product, inventory_count: 0
+        patch :update, { id: @product.id, purchase: true}, format: :json
+      end
+
+      it "renders an errors json" do
+        product_response = json_response
+        expect(product_response).to have_key(:errors)
+      end
+
+      it "renders the json errors on why the product could not be purchased" do
+        product_response = json_response
+        expect(product_response[:errors]).to include "Cannot purchase product with 0 inventory count"
+      end
+
+      it { should respond_with 422 }
+    end
+  end
+  
   # Test product deletion
   describe "DELETE #destroy" do
     before(:each) do

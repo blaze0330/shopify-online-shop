@@ -17,10 +17,6 @@ describe Product do
   it { should validate_presence_of :inventory_count }
   it { should validate_numericality_of(:inventory_count).is_greater_than_or_equal_to(0) }
 
-  # Test associations
-  it { should have_many(:orders) }
-  it { should have_many(:shopping_carts).through(:orders) }
-
   # Test to filter products that have non zero inventory
   describe ".available_inventory" do
     before(:each) do
@@ -62,6 +58,16 @@ describe Product do
         search_hash = { product_ids: [@product1.id, @product2.id]}
         expect(Product.search(search_hash)).to match_array([@product1, @product2])
       end
+    end
+  end
+
+  # Test decreasing product inventory count
+  describe "#decrement_product_inventory_count!" do
+    before(:each) do
+      @product1 = FactoryBot.create :product, inventory_count: 50
+    end
+    it "decreases the product inventory count by 1" do
+      expect{@product1.decrement_product_inventory_count!}.to change{@product1.inventory_count}.by(-1)
     end
   end
 
